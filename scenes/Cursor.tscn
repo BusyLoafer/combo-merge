@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjeavll4qwwu2"]
+
+[ext_resource type="Script" path="res://scripts/Cursor.gd" id="1_wtnfn"]
+[ext_resource type="Texture2D" uid="uid://clq8xhenhcuje" path="res://assets/images/Letters/ru/1.png" id="2_gevu3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dsue"]
+resource_local_to_scene = true
+size = Vector2(62, 62)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h36ht"]
+radius = 31.0
+
+[node name="StaticBody2D" type="CharacterBody2D"]
+script = ExtResource("1_wtnfn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5dsue")
+
+[node name="Cursor" type="Node2D" parent="."]
+
+[node name="image" type="Sprite2D" parent="Cursor"]
+texture = ExtResource("2_gevu3")
+
+[node name="Area2D" type="Area2D" parent="Cursor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor/Area2D"]
+shape = SubResource("CircleShape2D_h36ht")

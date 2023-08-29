@@ -1,0 +1,177 @@
+[gd_scene load_steps=16 format=3 uid="uid://b4pbv6h8hylsr"]
+
+[ext_resource type="Script" path="res://scripts/Start.gd" id="1_02nus"]
+[ext_resource type="Texture2D" uid="uid://dh6ny6mfe8uq7" path="res://assets/images/Fones/bg.png" id="1_yx7gr"]
+[ext_resource type="Texture2D" uid="uid://b46lrfs06yy63" path="res://assets/icons/Icon.png" id="3_kfroa"]
+[ext_resource type="Texture2D" uid="uid://bsjfhlvatns71" path="res://assets/icons/no 2.png" id="4_65ku6"]
+[ext_resource type="Texture2D" uid="uid://c3yslcby74c3d" path="res://assets/icons/dollar 1.png" id="5_05mff"]
+[ext_resource type="FontFile" uid="uid://o1afvj7vta5x" path="res://assets/fonts/Nunito-ExtraBold.ttf" id="6_sc8v5"]
+[ext_resource type="Texture2D" uid="uid://h4okm0hmstup" path="res://assets/icons/Icon-1.png" id="7_vufod"]
+[ext_resource type="Texture2D" uid="uid://behdavgoqsbd" path="res://assets/words/Frame 3509.png" id="8_l6gel"]
+[ext_resource type="Texture2D" uid="uid://bpy18ctnbwcxj" path="res://assets/icons/crown.png" id="9_fk1nn"]
+[ext_resource type="Texture2D" uid="uid://bgahja7vt4xae" path="res://assets/images/Buttons/Frame 2676.png" id="10_jrqk5"]
+[ext_resource type="Texture2D" uid="uid://d0wp2t1hyajp7" path="res://assets/images/Fones/Group-1.png" id="11_0ywul"]
+[ext_resource type="Texture2D" uid="uid://b26sq5t8o3yl3" path="res://assets/images/Fones/Group.png" id="12_r8re6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uea5a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jgvt"]
+content_margin_left = 24.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.0784314)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fgnpy"]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_02nus")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yx7gr")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 53
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_kfroa")
+
+[node name="TextureButton3" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("4_65ku6")
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 33)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_uea5a")
+
+[node name="TextureButton4" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/Panel"]
+layout_mode = 2
+offset_top = 7.0
+offset_right = 61.0
+offset_bottom = 39.0
+grow_vertical = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("5_05mff")
+
+[node name="Panel" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Panel"]
+custom_minimum_size = Vector2(61, 27)
+layout_mode = 2
+offset_left = 12.5
+offset_top = 9.0
+offset_right = 73.5
+offset_bottom = 36.0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_5jgvt")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Panel/Panel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_sc8v5")
+theme_override_font_sizes/font_size = 16
+text = "150"
+
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_vufod")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fgnpy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 56
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(299.41, 204.89)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("8_l6gel")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("9_fk1nn")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_sc8v5")
+theme_override_font_sizes/font_size = 24
+text = "8192"
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(164, 56)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("10_jrqk5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/Panel"]
+custom_minimum_size = Vector2(108, 107)
+layout_mode = 2
+offset_right = 108.0
+offset_bottom = 107.0
+texture = ExtResource("11_0ywul")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/Panel"]
+custom_minimum_size = Vector2(151, 163)
+layout_mode = 2
+offset_left = 180.0
+offset_top = 50.0
+offset_right = 331.0
+offset_bottom = 213.0
+texture = ExtResource("12_r8re6")
+expand_mode = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/TextureButton" to="." method="_on_start_pressed"]

@@ -1,0 +1,212 @@
+[gd_scene load_steps=11 format=3 uid="uid://crqxpif28tkxn"]
+
+[ext_resource type="FontFile" uid="uid://o1afvj7vta5x" path="res://assets/fonts/Nunito-ExtraBold.ttf" id="1_8rorc"]
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_qo06g"]
+[ext_resource type="Texture2D" uid="uid://txi7j2is003q" path="res://assets/images/Ellipse 3.png" id="2_tfwg8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyybf"]
+bg_color = Color(0, 0.0156863, 0.2, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3eavq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5bfrm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v83ia"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.0627451)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ri8pa"]
+bg_color = Color(1, 1, 1, 1)
+border_width_bottom = 2
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+corner_detail = 20
+
+[sub_resource type="Gradient" id="Gradient_sfv28"]
+colors = PackedColorArray(0.0784314, 0.905882, 1, 1, 0.278431, 0.792157, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hhroh"]
+gradient = SubResource("Gradient_sfv28")
+fill_to = Vector2(0, 1)
+
+[node name="Control" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eyybf")
+script = ExtResource("1_qo06g")
+
+[node name="Rounds" type="Node2D" parent="."]
+position = Vector2(180, 384)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tfwg8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 46)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3eavq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 56
+
+[node name="PanelContainer" type="Panel" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(226, 168)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5bfrm")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/PanelContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.5
+offset_top = -118.0
+offset_right = 111.5
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.0627451)
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("1_8rorc")
+theme_override_font_sizes/font_size = 84
+text = "Word 
+fuse"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/PanelContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.5
+offset_top = -118.0
+offset_right = 111.5
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.188235, 0.894118, 1, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("1_8rorc")
+theme_override_font_sizes/font_size = 84
+text = "Word 
+fuse"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="PanelContainer" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_v83ia")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/Panel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_8rorc")
+theme_override_font_sizes/font_size = 14
+text = "Stage 1"
+
+[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer"]
+clip_children = 2
+clip_contents = true
+custom_minimum_size = Vector2(164, 56)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_ri8pa")
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/Panel2"]
+custom_minimum_size = Vector2(164, 56)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -32.0
+offset_right = 82.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("GradientTexture2D_hhroh")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/VBoxContainer/Panel2/TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.5
+offset_top = -16.0
+offset_right = 25.5
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.239216, 0.690196, 0.827451, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("1_8rorc")
+theme_override_font_sizes/font_size = 20
+text = "PLAY"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Panel/VBoxContainer/Panel2/TextureButton" to="." method="_on_texture_button_pressed"]

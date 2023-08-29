@@ -1,0 +1,220 @@
+[gd_scene load_steps=28 format=3 uid="uid://cqbmy63puruyq"]
+
+[ext_resource type="Script" path="res://scripts/DevSettings.gd" id="1_cpnu7"]
+[ext_resource type="PackedScene" uid="uid://bc0wkkcukisqx" path="res://scenes/DevSlider.tscn" id="2_auea1"]
+[ext_resource type="FontFile" uid="uid://o1afvj7vta5x" path="res://assets/fonts/Nunito-ExtraBold.ttf" id="2_b8y1x"]
+[ext_resource type="Texture2D" uid="uid://bt4gacodha0mt" path="res://assets/images/Numbers/2.png" id="4_2vd28"]
+[ext_resource type="Texture2D" uid="uid://bgft1luoeqv1" path="res://assets/images/Letters/en/20.png" id="4_gmixf"]
+[ext_resource type="Texture2D" uid="uid://s8pmlphno20t" path="res://assets/images/Numbers/3.png" id="5_huy2l"]
+[ext_resource type="Texture2D" uid="uid://0pgw3r2ulmm4" path="res://assets/images/Numbers/4.png" id="6_lpxbs"]
+[ext_resource type="Texture2D" uid="uid://dtb1fld23u3cr" path="res://assets/images/Numbers/5.png" id="7_cas06"]
+[ext_resource type="Texture2D" uid="uid://bffvn8r076y8c" path="res://assets/images/Numbers/6.png" id="8_uyx5o"]
+[ext_resource type="Texture2D" uid="uid://k4aujowhqlce" path="res://assets/images/Numbers/7.png" id="9_xp7kh"]
+[ext_resource type="Texture2D" uid="uid://dq1oe64wtn6n0" path="res://assets/images/Numbers/8.png" id="10_s3q58"]
+[ext_resource type="Texture2D" uid="uid://b1hqb76u6v4a3" path="res://assets/images/Numbers/9.png" id="11_5q7sl"]
+[ext_resource type="Texture2D" uid="uid://d4a04cmlnpal7" path="res://assets/images/Numbers/10.png" id="12_kstlk"]
+[ext_resource type="Texture2D" uid="uid://bmvbxyjw4um0m" path="res://assets/images/Numbers/11.png" id="13_iil7p"]
+[ext_resource type="Texture2D" uid="uid://dxdvffgrrkjjr" path="res://assets/images/Numbers/12.png" id="14_d7fv5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erins"]
+bg_color = Color(0, 0.0156863, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_24px0"]
+bg_color = Color(0.0784314, 0.905882, 1, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_brsmp"]
+bg_color = Color(0.0784314, 0.905882, 1, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_070qf"]
+bg_color = Color(0.0784314, 0.905882, 1, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jp71"]
+bg_color = Color(0.0784314, 0.905882, 1, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3eocb"]
+bg_color = Color(0.0784314, 0.905882, 1, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_36otx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_43idc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ewib3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5aghy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8lh6h"]
+
+[sub_resource type="Theme" id="Theme_ejkem"]
+VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_36otx")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_43idc")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_ewib3")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_5aghy")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_8lh6h")
+
+[node name="Control" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_erins")
+script = ExtResource("1_cpnu7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(2.08165e-12, 48)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_b8y1x")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_24px0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_brsmp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_070qf")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_8jp71")
+theme_override_styles/focus = SubResource("StyleBoxFlat_3eocb")
+text = "Сохранить"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_ejkem")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("2_auea1")]
+layout_mode = 2
+
+[node name="TextureRect" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer" index="0"]
+texture = ExtResource("4_gmixf")
+
+[node name="HSlider" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer" index="1"]
+min_value = 3.0
+max_value = 30.0
+value = 5.0
+
+[node name="TextEdit" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer" index="2"]
+text = "5
+"
+
+[node name="PanelContainer13" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("2_auea1")]
+layout_mode = 2
+
+[node name="PanelContainer2" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("2_auea1")]
+layout_mode = 2
+
+[node name="TextureRect" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer2" index="0"]
+texture = ExtResource("4_2vd28")
+
+[node name="PanelContainer3" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("2_auea1")]
+layout_mode = 2
+
+[node name="TextureRect" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer3" index="0"]
+texture = ExtResource("5_huy2l")
+
+[node name="PanelContainer4" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("2_auea1")]
+layout_mode = 2
+
+[node name="TextureRect" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer4" index="0"]
+texture = ExtResource("6_lpxbs")
+
+[node name="PanelContainer5" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("2_auea1")]
+layout_mode = 2
+
+[node name="TextureRect" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer5" index="0"]
+texture = ExtResource("7_cas06")
+
+[node name="PanelContainer6" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("2_auea1")]
+layout_mode = 2
+
+[node name="TextureRect" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer6" index="0"]
+texture = ExtResource("8_uyx5o")
+
+[node name="PanelContainer7" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("2_auea1")]
+layout_mode = 2
+
+[node name="TextureRect" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer7" index="0"]
+texture = ExtResource("9_xp7kh")
+
+[node name="PanelContainer8" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("2_auea1")]
+layout_mode = 2
+
+[node name="TextureRect" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer8" index="0"]
+texture = ExtResource("10_s3q58")
+
+[node name="PanelContainer9" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("2_auea1")]
+layout_mode = 2
+
+[node name="TextureRect" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer9" index="0"]
+texture = ExtResource("11_5q7sl")
+
+[node name="PanelContainer10" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("2_auea1")]
+layout_mode = 2
+
+[node name="TextureRect" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer10" index="0"]
+texture = ExtResource("12_kstlk")
+
+[node name="PanelContainer11" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("2_auea1")]
+layout_mode = 2
+
+[node name="TextureRect" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer11" index="0"]
+texture = ExtResource("13_iil7p")
+
+[node name="PanelContainer12" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("2_auea1")]
+layout_mode = 2
+
+[node name="TextureRect" parent="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer12" index="0"]
+texture = ExtResource("14_d7fv5")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/Button" to="." method="_on_button_pressed"]
+
+[editable path="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer"]
+[editable path="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer2"]
+[editable path="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer3"]
+[editable path="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer4"]
+[editable path="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer5"]
+[editable path="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer6"]
+[editable path="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer7"]
+[editable path="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer8"]
+[editable path="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer9"]
+[editable path="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer10"]
+[editable path="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer11"]
+[editable path="MarginContainer/VBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer12"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5m3fbhmk6sk2"]
+
+[ext_resource type="Script" path="res://scripts/Block.gd" id="1_csed1"]
+[ext_resource type="Texture2D" uid="uid://clq8xhenhcuje" path="res://assets/images/Letters/ru/1.png" id="2_jjhpf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jfgr"]
+resource_local_to_scene = true
+size = Vector2(62, 62)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7qjfc"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pvns"]
+size = Vector2(62, 62)
+
+[node name="Block" type="Node2D"]
+script = ExtResource("1_csed1")
+
+[node name="image" type="Sprite2D" parent="."]
+texture = ExtResource("2_jjhpf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_8jfgr")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_7qjfc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_2pvns")
+disabled = true

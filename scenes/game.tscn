@@ -1,0 +1,306 @@
+[gd_scene load_steps=17 format=3 uid="uid://su1cnuf1qvui"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_lhmfp"]
+[ext_resource type="Texture2D" uid="uid://dkmxr5gvngc8i" path="res://assets/icons/remove.png" id="1_olrgs"]
+[ext_resource type="Texture2D" uid="uid://dh6ny6mfe8uq7" path="res://assets/images/Fones/bg.png" id="2_dnyms"]
+[ext_resource type="PackedScene" uid="uid://cdhd6e64bmic6" path="res://scenes/countdown.tscn" id="3_vfqes"]
+[ext_resource type="Texture2D" uid="uid://b7xg0tntxf5q8" path="res://assets/images/Fones/ground.png" id="4_w0jcb"]
+[ext_resource type="Texture2D" uid="uid://dhul15josfoku" path="res://assets/bonuses/stone.png" id="6_xbpi5"]
+[ext_resource type="PackedScene" uid="uid://cqbmy63puruyq" path="res://scenes/DevSettings.tscn" id="7_3sjvo"]
+[ext_resource type="Texture2D" uid="uid://bxbkdeeyaiuqq" path="res://assets/bonuses/ice.png" id="7_34v6g"]
+[ext_resource type="Texture2D" uid="uid://bee2aa4wgx4lg" path="res://assets/bonuses/bomb.png" id="8_dr187"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4cxf"]
+bg_color = Color(0, 0.0156863, 0.2, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5lp47"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22tnk"]
+bg_color = Color(0.964706, 0.968627, 0.992157, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.882353, 0.894118, 0.984314, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pntbj"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ga4f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3csig"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1e3su"]
+bg_color = Color(0.341176, 0.678431, 0.992157, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="Game" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_t4cxf")
+script = ExtResource("1_lhmfp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dnyms")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 48)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5lp47")
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/Panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -79.33
+offset_top = 15.61
+offset_right = -39.33
+offset_bottom = 55.61
+grow_horizontal = 0
+size_flags_horizontal = 8
+texture_normal = ExtResource("1_olrgs")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_22tnk")
+
+[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_22tnk")
+
+[node name="Panel3" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_22tnk")
+
+[node name="Panel4" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_22tnk")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pntbj")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("4_w0jcb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="ProgressBar" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" instance=ExtResource("3_vfqes")]
+layout_mode = 2
+mouse_filter = 1
+def_time = 5.0
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(326, 458)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2ga4f")
+
+[node name="Cursor" type="Sprite2D" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Panel"]
+modulate = Color(1, 1, 1, 0.411765)
+z_index = 2
+
+[node name="Points" type="Node2D" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Panel"]
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 24
+
+[node name="PanelContainer2" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3csig")
+
+[node name="TextureRect" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer2"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+rotation = 0.00595052
+texture_normal = ExtResource("6_xbpi5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_1e3su")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer3" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3csig")
+
+[node name="TextureRect" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer3"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+rotation = 0.00595052
+texture_normal = ExtResource("7_34v6g")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer3"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_1e3su")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer3/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer4" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3csig")
+
+[node name="TextureRect" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer4"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+rotation = 0.00595052
+texture_normal = ExtResource("8_dr187")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer4"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_1e3su")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer4/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LtrsCoolDown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Control" parent="." instance=ExtResource("7_3sjvo")]
+visible = false
+layout_mode = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Panel/TextureButton" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer2/TextureRect" to="." method="_on_stone_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer3/TextureRect" to="." method="_on_ice_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer4/TextureRect" to="." method="_on_bomb_pressed"]
+[connection signal="timeout" from="LtrsCoolDown" to="." method="_on_ltrs_cool_down_timeout"]
