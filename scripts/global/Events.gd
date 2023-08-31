@@ -8,3 +8,4 @@ signal block_drag
 signal empty_drag
 signal reset
 signal pause_timer
+signal change_data

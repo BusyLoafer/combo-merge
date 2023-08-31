@@ -1,10 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://su1cnuf1qvui"]
+[gd_scene load_steps=27 format=3 uid="uid://su1cnuf1qvui"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_lhmfp"]
 [ext_resource type="Texture2D" uid="uid://dkmxr5gvngc8i" path="res://assets/icons/remove.png" id="1_olrgs"]
 [ext_resource type="Texture2D" uid="uid://dh6ny6mfe8uq7" path="res://assets/images/Fones/bg.png" id="2_dnyms"]
+[ext_resource type="Texture2D" uid="uid://b26sq5t8o3yl3" path="res://assets/images/Fones/Group.png" id="3_udpai"]
 [ext_resource type="PackedScene" uid="uid://cdhd6e64bmic6" path="res://scenes/countdown.tscn" id="3_vfqes"]
+[ext_resource type="Texture2D" uid="uid://d0wp2t1hyajp7" path="res://assets/images/Fones/Group-1.png" id="4_0312k"]
+[ext_resource type="Texture2D" uid="uid://c3yslcby74c3d" path="res://assets/icons/dollar 1.png" id="4_nd57g"]
 [ext_resource type="Texture2D" uid="uid://b7xg0tntxf5q8" path="res://assets/images/Fones/ground.png" id="4_w0jcb"]
+[ext_resource type="FontFile" uid="uid://o1afvj7vta5x" path="res://assets/fonts/Nunito-ExtraBold.ttf" id="5_cvvy4"]
+[ext_resource type="Texture2D" uid="uid://bpy18ctnbwcxj" path="res://assets/icons/crown.png" id="6_evgha"]
 [ext_resource type="Texture2D" uid="uid://dhul15josfoku" path="res://assets/bonuses/stone.png" id="6_xbpi5"]
 [ext_resource type="PackedScene" uid="uid://cqbmy63puruyq" path="res://scenes/DevSettings.tscn" id="7_3sjvo"]
 [ext_resource type="Texture2D" uid="uid://bxbkdeeyaiuqq" path="res://assets/bonuses/ice.png" id="7_34v6g"]
@@ -15,21 +20,44 @@ bg_color = Color(0, 0.0156863, 0.2, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5lp47"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22tnk"]
-bg_color = Color(0.964706, 0.968627, 0.992157, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.882353, 0.894118, 0.984314, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nn4xk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fpqk8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3s305"]
+content_margin_left = 24.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.0784314)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p50bs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4d4o"]
+content_margin_left = 24.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.0784314)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pntbj"]
 content_margin_left = 16.0
 content_margin_right = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_intcc"]
+texture = ExtResource("4_w0jcb")
+expand_margin_left = 20.0
+expand_margin_top = 10.0
+expand_margin_right = 20.0
+expand_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ga4f"]
 
@@ -51,6 +79,9 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_t4cxf")
 script = ExtResource("1_lhmfp")
+current_score_path = NodePath("MarginContainer/VBoxContainer/ScoreLabel/MarginContainer/CurrentScore")
+best_score_path = NodePath("MarginContainer/VBoxContainer/ScoreLabel/MarginContainer/BestScorePanel/BestScore")
+score_ups_path = NodePath("MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Panel/ScoreUps")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -61,6 +92,22 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_dnyms")
 
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 211.0
+offset_top = 38.0
+offset_right = 362.0
+offset_bottom = 201.0
+texture = ExtResource("3_udpai")
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 30.0
+offset_right = 140.0
+offset_bottom = 137.0
+texture = ExtResource("4_0312k")
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -68,6 +115,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_top = 48
 theme_override_constants/margin_bottom = 24
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
@@ -83,40 +131,114 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_5lp47")
 [node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/Panel"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 6
 anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-offset_left = -79.33
-offset_top = 15.61
-offset_right = -39.33
-offset_bottom = 55.61
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -20.0
+offset_right = -13.0
+offset_bottom = 20.0
 grow_horizontal = 0
+grow_vertical = 2
 size_flags_horizontal = 8
 texture_normal = ExtResource("1_olrgs")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="ScoreLabel" type="Panel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 48)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nn4xk")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScoreLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_right = 9
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/ScoreLabel/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fpqk8")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ScoreLabel/MarginContainer/Panel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_right = 32.0
+offset_bottom = 16.0
+grow_vertical = 2
+texture = ExtResource("4_nd57g")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScoreLabel/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -11.5
+offset_right = 52.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_cvvy4")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_3s305")
+text = "150"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CurrentScore" type="Label" parent="MarginContainer/VBoxContainer/ScoreLabel/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_cvvy4")
+theme_override_font_sizes/font_size = 24
+text = "0"
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(52, 52)
+[node name="BestScorePanel" type="PanelContainer" parent="MarginContainer/VBoxContainer/ScoreLabel/MarginContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_22tnk")
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource("StyleBoxEmpty_p50bs")
 
-[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(52, 52)
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/ScoreLabel/MarginContainer/BestScorePanel"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_22tnk")
+size_flags_horizontal = 0
+size_flags_vertical = 4
 
-[node name="Panel3" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(52, 52)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_22tnk")
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ScoreLabel/MarginContainer/BestScorePanel/Panel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("6_evgha")
+expand_mode = 1
 
-[node name="Panel4" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(52, 52)
+[node name="BestScore" type="Label" parent="MarginContainer/VBoxContainer/ScoreLabel/MarginContainer/BestScorePanel"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_22tnk")
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("5_cvvy4")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_k4d4o")
+text = "0
+"
+vertical_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -124,9 +246,9 @@ size_flags_vertical = 3
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxEmpty_pntbj")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
-texture = ExtResource("4_w0jcb")
+theme_override_styles/panel = SubResource("StyleBoxTexture_intcc")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
@@ -149,6 +271,8 @@ modulate = Color(1, 1, 1, 0.411765)
 z_index = 2
 
 [node name="Points" type="Node2D" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Panel"]
+
+[node name="ScoreUps" type="Node2D" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Panel"]
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

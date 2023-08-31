@@ -4,9 +4,19 @@ var empty_scene = preload("res://scenes/EmptyBlock.tscn")
 var block_scene = preload("res://scenes/block.tscn")
 var cursor_scene = preload("res://scenes/Cursor.tscn")
 var point_scene = preload("res://scenes/point.tscn")
+var score_up_scene = preload("res://scenes/score_up.tscn")
 
 @onready var field = $MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Panel
 @onready var points = $MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Panel/Points
+
+@export_node_path("Label") var current_score_path
+var score: Label
+
+@export_node_path("Label") var best_score_path
+var best_score: Label
+
+@export_node_path("Node2D") var score_ups_path
+var score_ups: Node2D
 
 var w := 62	# width
 var p := 4	# padding
@@ -89,6 +99,8 @@ var nbrs = [
 
 var pathes = {}
 
+var cur_score = 0
+
 var cells: Array
 
 var start := Vector2(32, 32)
@@ -107,6 +119,8 @@ var state = States.IDLE
 
 var remove_arr = []
 var update_arr = []
+
+var verticals = [0, 0, 0, 0, 0]
 
 var first_index := -1
 var first_value := -1
@@ -137,9 +151,32 @@ func _ready():
 	Events.connect("empty_drag", _empty_drag)
 	Events.connect("block_drop", _block_drop)
 	Events.connect("reset", _reset)
+	Events.connect("change_data", _change_data)
 	_add_line()
 	Events.emit_signal("start_timer")
+	
+	if current_score_path:
+		score = get_node(current_score_path)
+	else:
+		printerr("current_score_path not found")
 	pass
+	
+	if best_score_path:
+		best_score = get_node(best_score_path)
+		best_score.text = str(Data.user.total_score)
+	else:
+		printerr("best_score_path not found")
+	pass
+	
+	if score_ups_path:
+		score_ups = get_node(score_ups_path)
+	else:
+		printerr("score_ups_path not found")
+	pass
+
+
+func _change_data() -> void:
+	best_score.text = str(Data.user.total_score)
 
 
 func _default_field() -> void:
@@ -245,6 +282,7 @@ func _update_letters() -> void:
 			if new_val > max: max = new_val
 			cells[i].value = new_val
 			cells[i].obj.set_value(new_val)
+			calc_score(i)
 	update_arr = []
 
 
@@ -270,6 +308,9 @@ func _check_all_verticals() -> void:
 	if update_arr.size() or !check:
 		state = States.CHECK
 	elif check:
+		verticals = [0, 0, 0, 0, 0]
+		if Data.user.total_score < cur_score:
+			Data.set_total_score(cur_score)
 		state = States.IDLE
 		if countdown == Countdowns.STOP:
 			countdown = Countdowns.RUN
@@ -301,31 +342,13 @@ func _block_pressed(index: int, pos: Vector2) -> void:
 #	print(index)
 
 func _block_drag(index: int, pos: Vector2) -> void:
-#	prints(state==States.MOVE, first_index, index)
 	if state == States.MOVE and first_index >= 0:
 		if index != last_index:
 			if pathes.has(str(index)):
 					last_index = index
 					draw_points()
-#					cursor.pos = pos
 					cursor.position = pos
 					last_pos = pos
-#		if cells[index].value:
-#			if index == first_index:
-#				cursor.pos = pos
-#				last_index = first_index
-#				return
-#			if _check_neighbours(index):
-#				last_index = index
-#				cursor.pos = cells[index].obj.position
-#				pass
-#		else:
-##			if _check_neighbours(index, false):
-#				last_index = index
-#				cursor.pos = pos
-##				cursor.move_and_collide(pos - cursor.position)
-##				cursor.position = pos
-	pass
 
 
 func _empty_drag(index: int, pos: Vector2) -> void:
@@ -333,8 +356,6 @@ func _empty_drag(index: int, pos: Vector2) -> void:
 		if _check_neighbours(index, false):
 			last_index = index
 			cursor.position = pos
-			pass
-	pass
 	
 func _block_drop(index, pos: Vector2) -> void:
 	pass
@@ -355,6 +376,7 @@ func _drop() -> void:
 			cells[first_index].obj.queue_free()
 			cells[first_index].obj = null
 			cells[first_index].value = 0
+			calc_score(index)
 			var new_val = cells[index].value + 1
 			if new_val > max: max = new_val
 			cells[index].value = new_val
@@ -454,7 +476,6 @@ func clear_points() -> void:
 
 func draw_points() -> void:
 	clear_points()
-	print(pathes[str(last_index)])
 	var path = pathes[str(last_index)]
 	for p in path:
 		var y = floor(p / 5.0)
@@ -462,6 +483,18 @@ func draw_points() -> void:
 		var point = point_scene.instantiate()
 		point.position = (Vector2(x, y) + Vector2(0.5, 0.5)) * full
 		points.add_child(point)
+	pass
+
+
+func calc_score(index: int) -> void:
+	var line_index = index - 5 * floor(index / 5.0)
+	verticals[line_index] += 1
+	cur_score += verticals[line_index] * 5
+	score.text = str(cur_score)
+	var sc_up = score_up_scene.instantiate() as ScoreUp
+	sc_up.set_params(index, verticals[line_index])
+	score_ups.add_child(sc_up)
+#	print(cur_score)
 	pass
 
 

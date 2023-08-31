@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 Events="*res://scripts/global/Events.gd"
 Images="*res://scripts/global/Images.gd"
 Settings="*res://scripts/global/Settings.gd"
+Data="*res://scripts/global/UserData.gd"
 
 [display]
 
